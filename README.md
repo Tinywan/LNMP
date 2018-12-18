@@ -130,3 +130,5 @@ zlib
 ```
 /usr/local/php/etc/
 ```
+http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/4.2.0.tar.gz
+http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/phpredis-4.2.0.tar.gz

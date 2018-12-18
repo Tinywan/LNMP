@@ -6,7 +6,7 @@ MAINTAINER tinywan@163.com
 
 # 设置环境变量
 ENV PHP_VERSION 7.3.0
-ENV REDIS_VERSION 4.2.0
+ENV PHP_REDIS_VERSION 4.2.0
 # 报错debconf: unable to initialize frontend: Dialog
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -104,10 +104,10 @@ RUN set -x \
     && cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf \
     # 安装 Redis 扩展
     && cd ~/download \
-    # && wget https://github.com/phpredis/phpredis/archive/$REDIS_VERSION.tar.gz \
-    && wget http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/$REDIS_VERSION.tar.gz \
-    && tar -zxvf $REDIS_VERSION.tar.gz \
-    && cd phpredis-$REDIS_VERSION \
+    # && wget https://github.com/phpredis/phpredis/archive/$PHP_REDIS_VERSION.tar.gz \
+    && wget http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/$PHP_REDIS_VERSION.tar.gz \
+    && tar -zxvf $PHP_REDIS_VERSION.tar.gz \
+    && cd phpredis-$PHP_REDIS_VERSION \
     && /usr/local/php/bin/phpize \
     && ./configure --with-php-config=/usr/local/php/bin/php-config \
     && make \
