@@ -1,5 +1,23 @@
 
-## Configure File
+#### Build
+```
+$ docker build --no-cache -t tinywan/lnmp-php7.2.13:latest .
+```
+#### Login 
+```
+$ docker login --username=tinywan --password=tinywan123
+```
+
+#### Tag 
+```
+$ docker tag e96dbe0fbbfb tinywan/lnmp-php7.2.13:latest
+```
+
+#### Push 
+```
+$ docker push tinywan/lnmp-php7.2.13:latest
+```
+
 #### PHP Configure
 ```
 /usr/local/php/etc/
@@ -22,13 +40,13 @@ Digest: sha256:bbb4e99dad77cd884ca56b1f1c3f33f2a15f3e2360abe364f8d2a9557fd45e16
 Status: Downloaded newer image for tinywan/lnmp-php7.2.13:latest
 f31bb449fd8bed26232d0da52911859f229d87dacc1a4b603b55f77bbed40cde
 ```
-#### cat image
+#### Cat Image
 ```
 $ docker images
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
 tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
 ```
-#### cat running Container
+#### Cat Running Container
 ```
 $ docker ps
 CONTAINER ID        IMAGE                    COMMAND             CREATED               PORTS               NAMES
@@ -41,13 +59,10 @@ root@f31bb449fd8b:/# cat /etc/issue
 Ubuntu 18.04.1 LTS \n \l
 ```
 
-#### cat PHP Version
+#### PHP Version
 ```
 root@f31bb449fd8b:/# /usr/local/php/bin/php -v
 PHP 7.3.0 (cli) (built: Dec 18 2018 11:05:01) ( NTS )
 Copyright (c) 1997-2018 The PHP Group
 Zend Engine v3.3.0-dev, Copyright (c) 1998-2018 Zend Technologies
 ```
-
-
-# lnmp
