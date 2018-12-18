@@ -53,8 +53,8 @@ f31bb449fd8bed26232d0da52911859f229d87dacc1a4b603b55f77bbed40cde
 > Cat Running Container
 ```
 $ docker ps
-CONTAINER ID        IMAGE                    COMMAND             CREATED               PORTS               NAMES
-f31bb449fd8b        tinywan/lnmp-php7.2.13   "/bin/bash"         12 seconds ago        9000/tcp            lnmp-php7.2
+CONTAINER ID   IMAGE          COMMAND               PORTS    NAMES
+f31bb449fd8b   tinywan/lnmp-php7.2.13  "/bin/bash"  9000/tcp  lnmp-php7.2
 ```
 > Input Container
 ```
