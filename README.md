@@ -2,31 +2,34 @@
 > Source Code
 
 * [http://jp2.php.net/distributions/php-7.2.13.tar.gz](http://jp2.php.net/distributions/php-7.2.13.tar.gz)
-   > [http://oss.tinywan.com/uploads/php-7.2.13.tar.gz](http://oss.tinywan.com/uploads/php-7.2.13.tar.gz)
+* [http://oss.tinywan.com/uploads/php-7.2.13.tar.gz](http://oss.tinywan.com/uploads/php-7.2.13.tar.gz)
 * [https://github.com/phpredis/phpredis/archive/4.2.0.tar.gz](https://github.com/phpredis/phpredis/archive/4.2.0.tar.gz)
 
-> Build
+> Build Docker Images
 ```
 $ docker build --no-cache -t tinywan/lnmp-php7.2.13:latest .
 ```
-> Login 
+
+> Login Docker Hub
 ```
 $ docker login --username=tinywan --password=tinywan123
 ```
 
-> Tag 
+> Image Tag 
 ```
 $ docker tag e96dbe0fbbfb tinywan/lnmp-php7.2.13:latest
 ```
 
-> Push 
+> Image Push 
 ```
 $ docker push tinywan/lnmp-php7.2.13:latest
 ```
 
-> PHP Configure
+> Cat Images
 ```
-/usr/local/php/etc/
+$ docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
 ```
 
 > Run Container
@@ -46,12 +49,7 @@ Digest: sha256:bbb4e99dad77cd884ca56b1f1c3f33f2a15f3e2360abe364f8d2a9557fd45e16
 Status: Downloaded newer image for tinywan/lnmp-php7.2.13:latest
 f31bb449fd8bed26232d0da52911859f229d87dacc1a4b603b55f77bbed40cde
 ```
-> Cat Image
-```
-$ docker images
-REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
-```
+
 > Cat Running Container
 ```
 $ docker ps
@@ -127,4 +125,8 @@ zip
 zlib
 
 [Zend Modules]
+```
+> PHP Configure
+```
+/usr/local/php/etc/
 ```
