@@ -112,6 +112,11 @@ RUN set -x \
     && ./configure --with-php-config=/usr/local/php/bin/php-config \
     && make \
     && make install \
+    # 安装 Composer
+    && cd ~/download \
+    && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php --install-dir=/usr/local/sbin --filename=composer \
+    && php -r "unlink('composer-setup.php');" \
     # 加入环境变量
     && echo "export PATH=$PATH:/usr/local/php/bin:/usr/local/php/sbin" >> ~/.bashrc ["/bin/bash", "-c", "source ~/.bashrc"] \
     # 删除安装文件
