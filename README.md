@@ -125,10 +125,16 @@ zip
 zlib
 
 [Zend Modules]
+
 ```
 > PHP Configure
 ```
 /usr/local/php/etc/
 ```
-http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/4.2.0.tar.gz
-http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/phpredis-4.2.0.tar.gz
+
+> ERROR
+
+* Error01 `/bin/sh: 1: source: not found`
+    > `RUN ["/bin/bash", "-c", "source ~/.profile"]` replace `RUN source ~/.profile `
+* Error03 `https://registry-1.docker.io/v2/: net/http: request .. Client.Timeout`  
+    >  [https://mirrors.ustc.edu.cn/help/dockerhub.html](https://mirrors.ustc.edu.cn/help/dockerhub.html)
