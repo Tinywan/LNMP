@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Tinywan/LNMP.svg?branch=master)](https://github.com/Tinywan/LNMP)
 
 > Source Code
 
