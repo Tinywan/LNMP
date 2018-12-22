@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Tinywan/LNMP.svg?branch=master)](https://github.com/Tinywan/LNMP)
+![Zabbix-Share-docker-compose.yml.png](images/Zabbix-Share-docker-compose.yml.png)  
 
 > Source Code
 
