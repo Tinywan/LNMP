@@ -8,8 +8,11 @@
 
 > Build Docker Images
 ```
-$ docker build --no-cache -t tinywan/lnmp-php7.2.13:latest .
+$ docker build -rm --no-cache -t tinywan/lnmp-php7.2.13:latest .
 ```
+* `--no-cache` 默认false。设置该选项，将不使用Build Cache构建镜像
+* `--rm`，默认--rm=true，即整个构建过程成功后删除中间环节的容器
+* `--tag, -t`，镜像的名字及tag
 
 > Login Docker Hub
 ```

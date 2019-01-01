@@ -40,6 +40,7 @@ RUN set -x \
     re2c \
     vim \
     autoconf \
+    cron \
     unzip \
     # 建立目录
     && mkdir ~/download \
