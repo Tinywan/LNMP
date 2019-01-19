@@ -42,6 +42,9 @@ RUN set -x \
     autoconf \
     cron \
     unzip \
+    # crontab
+    && sed -i "s/session    required     pam_loginuid.so/\#session    required     pam_loginuid.so/g" /etc/pam.d/cron \
+    && /etc/init.d/cron start \
     # 建立目录
     && mkdir ~/download \
     && cd ~/download \   

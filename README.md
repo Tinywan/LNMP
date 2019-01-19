@@ -13,7 +13,7 @@
 ### Build Docker Images
 
 ```
-$ docker build -rm --no-cache -t tinywan/lnmp-php7.2.13:latest .
+$ docker build --rm --no-cache -t tinywan/lnmp-php7.2.13:latest .
 ```
 
 * `--no-cache` 默认false。设置该选项，将不使用Build Cache构建镜像
