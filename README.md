@@ -57,12 +57,22 @@ CONTAINER ID   IMAGE          COMMAND               PORTS    NAMES
 f31bb449fd8b   tinywan/lnmp-php7.2.13  "/bin/bash"  9000/tcp  lnmp-php7.2
 ```
 
+```
+docker run --rm -t -i phusion/baseimage:0.11 /sbin/my_init -- bash -l
+```
 #### Input Container
 
 ```
 $ docker attach f31bb449fd8b
 root@f31bb449fd8b:/# cat /etc/issue
 Ubuntu 18.04.1 LTS \n \l
+```
+
+### baseimage 
+
+```
+docker pull tinywan/baseimage
+docker run -it tinywan/baseimage /bin/bash
 ```
 
 ### PHP Version
@@ -141,7 +151,3 @@ zlib
     > `RUN ["/bin/bash", "-c", "source ~/.profile"]` replace `RUN source ~/.profile `
 * Error03 `https://registry-1.docker.io/v2/: net/http: request .. Client.Timeout`  
     >  [https://mirrors.ustc.edu.cn/help/dockerhub.html](https://mirrors.ustc.edu.cn/help/dockerhub.html)
-
-
-
-
