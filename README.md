@@ -27,6 +27,7 @@ $ docker login --username=tinywan --password=tinywan123
 
 #### Image Tag 
 ```
+$ docker images
 $ docker tag e96dbe0fbbfb tinywan/lnmp-php7.2.13:latest
 ```
 
