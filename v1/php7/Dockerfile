@@ -53,10 +53,8 @@ RUN set -x \
     && wget http://tinywan-oss.oss-cn-shanghai.aliyuncs.com/uploads/php-$PHP_VERSION.tar.gz \
     && tar -zxf php-$PHP_VERSION.tar.gz \
     && cd php-$PHP_VERSION \
-    # && groupadd -f www-data \
-    # && useradd -r -g www-data www-data \ 
+    # Write Permission
     && usermod -u 1000 www-data \ 
-    && usermod -G staff www-data \ 
     # 检查配置文件
     && ./configure \
     --prefix=/usr/local/php \
