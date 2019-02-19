@@ -16,13 +16,21 @@
 $ docker build --rm --no-cache -t tinywan/lnmp-php7.2.13:latest .
 ```
 
-* `--no-cache` 默认false。设置该选项，将不使用Build Cache构建镜像
-* `--rm`，默认--rm=true，即整个构建过程成功后删除中间环节的容器
-* `--tag, -t`，镜像的名字及tag
+* `--no-cache` 默认`false`。设置该选项，将不使用Build Cache构建镜像
+* `--rm`，默认`--rm=true`，即整个构建过程成功后删除中间环节的容器
+* `--tag, -t`，镜像的名字及`tag`
 
 #### Login Docker Hub
 ```
 $ docker login --username=tinywan --password=tinywan123
+```
+
+#### Cat Images
+
+```
+$ docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
 ```
 
 #### Image Tag 
@@ -34,14 +42,6 @@ $ docker tag e96dbe0fbbfb tinywan/lnmp-php7.2.13:latest
 #### Image Push 
 ```
 $ docker push tinywan/lnmp-php7.2.13:latest
-```
-
-#### Cat Images
-
-```
-$ docker images
-REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
 ```
 
 #### Run Container
@@ -152,3 +152,8 @@ zlib
     > `RUN ["/bin/bash", "-c", "source ~/.profile"]` replace `RUN source ~/.profile `
 * Error03 `https://registry-1.docker.io/v2/: net/http: request .. Client.Timeout`  
     >  [https://mirrors.ustc.edu.cn/help/dockerhub.html](https://mirrors.ustc.edu.cn/help/dockerhub.html)
+
+### Help
+
+*   [write in shared volumes docker](https://stackoverflow.com/questions/29245216/write-in-shared-volumes-docker)
+*   [bind-mount或者COPY时需要注意 用户、文件权限 的问题](https://segmentfault.com/a/1190000015233229)

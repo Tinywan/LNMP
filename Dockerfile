@@ -40,6 +40,11 @@ RUN set -x \
     re2c \
     vim \
     autoconf \
+    cron \
+    unzip \
+    # crontab
+    && sed -i "s/session    required     pam_loginuid.so/\#session    required     pam_loginuid.so/g" /etc/pam.d/cron \
+    && /etc/init.d/cron start \
     # 建立目录
     && mkdir ~/download \
     && cd ~/download \   
@@ -50,6 +55,8 @@ RUN set -x \
     && cd php-$PHP_VERSION \
     # && groupadd -f www-data \
     # && useradd -r -g www-data www-data \ 
+    && usermod -u 1000 www-data \ 
+    && usermod -G staff www-data \ 
     # 检查配置文件
     && ./configure \
     --prefix=/usr/local/php \
