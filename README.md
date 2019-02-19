@@ -13,7 +13,8 @@
 ### Build Docker Images
 
 ```
-$ docker build --rm --no-cache -t tinywan/lnmp-php7.2.13:latest .
+$ docker build --rm --no-cache -t tinywan/lnmp:latest .
+$ docker build --rm --no-cache -t tinywan/lnmp:php7.2.13-v2 .
 ```
 
 * `--no-cache` 默认`false`。设置该选项，将不使用Build Cache构建镜像
@@ -30,37 +31,34 @@ $ docker login --username=tinywan --password=tinywan123
 ```
 $ docker images
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-tinywan/lnmp-php7.2.13   latest              e96dbe0fbbfb        43 minutes ago      789MB
+tinywan/lnmp             latest              e96dbe0fbbfb        43 minutes ago      789MB
 ```
 
 #### Image Tag 
 ```
 $ docker images
-$ docker tag e96dbe0fbbfb tinywan/lnmp-php7.2.13:latest
+$ docker tag e96dbe0fbbfb tinywan/lnmp:php7.2.13-v3
 ```
 
 #### Image Push 
 ```
-$ docker push tinywan/lnmp-php7.2.13:latest
+$ docker push tinywan/lnmp:php7.2.13-v3
 ```
 
 #### Run Container
 
 ```
-$ docker run -it -d --name lnmp-php7.2 tinywan/lnmp-php7.2.13 /bin/bash
+$ docker run -it -d --name lnmp-php7.2 tinywan/lnmp /bin/bash
 ```
 
 #### Cat Running Container
 
 ```
 $ docker ps
-CONTAINER ID   IMAGE          COMMAND               PORTS    NAMES
-f31bb449fd8b   tinywan/lnmp-php7.2.13  "/bin/bash"  9000/tcp  lnmp-php7.2
+CONTAINER ID   IMAGE                      COMMAND               PORTS    NAMES
+f31bb449fd8b   tinywan/lnmp:php7.2.13-v3  "/bin/bash"  9000/tcp  lnmp-php7.2
 ```
 
-```
-docker run --rm -t -i phusion/baseimage:0.11 /sbin/my_init -- bash -l
-```
 #### Input Container
 
 ```
