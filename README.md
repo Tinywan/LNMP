@@ -2,6 +2,7 @@
 
 ### Update Record
 
+* 2019.02.22 Dockerfile add  `usermod -u 1000 www-data`  
 * 2019.01.11 add install `unzip、crontab`  
 
 ### Source Code
@@ -146,11 +147,12 @@ zlib
 
 ### ERROR
 
-* Error01 `/bin/sh: 1: source: not found`
+*   Error01 `/bin/sh: 1: source: not found`
     > `RUN ["/bin/bash", "-c", "source ~/.profile"]` replace `RUN source ~/.profile `
-* Error03 `https://registry-1.docker.io/v2/: net/http: request .. Client.Timeout`  
+*   Error03 `https://registry-1.docker.io/v2/: net/http: request .. Client.Timeout`  
     >  [https://mirrors.ustc.edu.cn/help/dockerhub.html](https://mirrors.ustc.edu.cn/help/dockerhub.html)
-
+*   MAC OS `Permissions on the Docker host;` 
+    > `usermod -G staff www-data`
 ### Help
 
 *   [write in shared volumes docker](https://stackoverflow.com/questions/29245216/write-in-shared-volumes-docker)
