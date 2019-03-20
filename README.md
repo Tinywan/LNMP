@@ -2,6 +2,7 @@
 
 ### Update Record
 
+* 2019.03.20 Dockerfile update ENV  `/etc/localtime /etc/timezone LANG C.UTF-8`  
 * 2019.02.22 Dockerfile add  `usermod -u 1000 www-data`  
 * 2019.01.11 add install `unzip、crontab`  
 

@@ -9,6 +9,10 @@ ENV PHP_VERSION 7.2.13
 ENV PHP_REDIS_VERSION 4.2.0
 # 报错debconf: unable to initialize frontend: Dialog
 ENV DEBIAN_FRONTEND noninteractive
+# 设置支持中文
+ENV LANG C.UTF-8
+# 设置时区
+ENV TZ Asia/Shanghai
 
 # 复制命令，把本机的文件复制到镜像中。提前都放进基础镜像的/usr/local/src目录下，方便编译安装
 # ADD php-7.0.0.tar.gz /usr/local/src
