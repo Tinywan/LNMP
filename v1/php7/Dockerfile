@@ -24,6 +24,8 @@ ADD ./sources.list /etc/apt
 RUN apt-get update && apt-get install --assume-yes apt-utils
 RUN apt-get upgrade -y
 RUN set -x \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apt-get install tzdata \
     && apt-get install -y libkrb5-dev wget \
     libc-client2007e     \
     libc-client2007e-dev \
@@ -130,7 +132,9 @@ RUN set -x \
     && /usr/local/php/bin/php -r "unlink('composer-setup.php');" \
     # 删除安装文件
     && rm -rf ~/download \
-    && apt-get clean 
+    && apt-get clean \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # 设置容器启动时要运行的命令只有在你执行 docker run 或者 docker start 命令是才会运行，其他情况下不运行。
 CMD ["/usr/local/php/sbin/php-fpm"]

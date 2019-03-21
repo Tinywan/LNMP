@@ -15,8 +15,8 @@
 ### Build Docker Images
 
 ```
-$ docker build --rm --no-cache -t tinywan/lnmp:latest .
-$ docker build --rm --no-cache -t tinywan/lnmp:php7.2.13-v2 .
+$ docker build --rm --no-cache -t tinywan/dnmp:latest .
+$ docker build --rm --no-cache -t tinywan/dnmp:php7.2-v1 .
 ```
 
 * `--no-cache` 默认`false`。设置该选项，将不使用Build Cache构建镜像
@@ -39,12 +39,12 @@ tinywan/lnmp             latest              e96dbe0fbbfb        43 minutes ago 
 #### Image Tag 
 ```
 $ docker images
-$ docker tag e96dbe0fbbfb tinywan/lnmp:php7.2.13-v3
+$ docker tag e96dbe0fbbfb tinywan/dnmp:php7.2-v1
 ```
 
 #### Image Push 
 ```
-$ docker push tinywan/lnmp:php7.2.13-v3
+$ docker push tinywan/dnmp:php7.2-v1
 ```
 
 #### Run Container
