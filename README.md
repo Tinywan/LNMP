@@ -75,6 +75,7 @@ Ubuntu 18.04.1 LTS \n \l
 docker pull tinywan/baseimage
 docker run -it tinywan/baseimage /bin/bash
 ```
+> 从Registry中拉取镜像 `docker pull registry.cn-beijing.aliyuncs.com/tinywan/dnmp:php7.2-v3`
 
 ### PHP Version
 
