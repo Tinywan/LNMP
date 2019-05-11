@@ -86,6 +86,28 @@ Copyright (c) 1997-2018 The PHP Group
 Zend Engine v3.3.0-dev, Copyright (c) 1998-2018 Zend Technologies
 ```
 
+### 阿里云推送记录
+1、构建镜像
+```
+docker build --rm --no-cache -t tinywan/dnmp:php7.0-v1 .
+```
+2、登录
+```
+docker login --username=756684177@qq.com registry.cn-beijing.aliyuncs.com
+```
+3、镜像关联
+```
+docker tag 8072fc8cca59 registry.cn-beijing.aliyuncs.com/tinywan/dnmp:php7.0-v1
+```
+4、推送到阿里云镜像仓库
+```
+docker push registry.cn-beijing.aliyuncs.com/tinywan/dnmp:php7.0-v1
+```
+5、拉取阿里云镜像
+```
+docker pull registry.cn-beijing.aliyuncs.com/tinywan/dnmp:php7.0-v1
+```
+
 #### Has Install  PHP Module
 ```
 # php -m
