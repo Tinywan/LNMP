@@ -5,32 +5,33 @@ FROM ${IMAGE_BASE}:${IMAGE_TAG}
 
 LABEL maintainer="Tinywan <etinywan@163.com>"
 
-# Docker Build Arguments
-
-# Docker Environment
 ENV PHP_VERSION 7.2.13
 ENV PHP_REDIS_VERSION 4.2.0
+ENV PHP_SWOOLE_VERSION swoole-4.3.4
 ENV PHP_INI_DIR /usr/local/php/etc
 ENV PHP_CONFIG_DIR /usr/local/php/bin/php-config
 ENV PHP_PHPIZE /usr/local/php/bin/phpize
 
-# Sysytem Environment
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 ENV TZ Asia/Shanghai
 
+# 复制命令，把本机的文件复制到镜像中。提前都放进基础镜像的/usr/local/src目录下，方便编译安装
+# ADD php-7.0.0.tar.gz /usr/local/src
+# 更新源sources.list 
 ADD ./sources.list /etc/apt 
 ADD ./composer.phar /usr/local/bin/composer 
-
 WORKDIR /var/www
 
+# 安装依赖
+# RUN apt-get update && apt-get install --assume-yes apt-utils
 RUN apt-get update && apt-get install --assume-yes apt-utils
 RUN apt-get upgrade -y \
     # allow running as an arbitrary user (https://github.com/docker-library/php/issues/743)
-	[ ! -d /var/www ]; \
-	mkdir -p /var/www; \
-	chown www-data:www-data /var/www; \
-	chmod 777 /var/www
+    [ ! -d /var/www ]; \
+    mkdir -p /var/www; \
+    chown www-data:www-data /var/www; \
+    chmod 777 /var/www
 
 RUN set -x \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
@@ -69,7 +70,7 @@ RUN set -x \
     && tar -zxf php-$PHP_VERSION.tar.gz \
     && cd php-$PHP_VERSION \
     # Write Permission
-    # && usermod -u 1000 www-data \ 
+    && usermod -u 1000 www-data \ 
     # 检查配置文件
     && ./configure \
     --prefix=/usr/local/php \
@@ -137,6 +138,16 @@ RUN set -x \
     && find -type f -name '*.a' -delete \
     && make install \ 
     && make clean \ 
+    # 安装 Swoole 扩展
+    && wget http://pecl.php.net/get/$PHP_SWOOLE_VERSION.tgz \
+    && tar -zxvf $PHP_SWOOLE_VERSION.tgz \
+    && cd $PHP_SWOOLE_VERSION \
+    && ${PHP_PHPIZE} \
+    && ./configure --with-php-config=${PHP_CONFIG_DIR} \
+    && make -j "$(nproc)" \
+    && find -type f -name '*.a' -delete \
+    && make install \ 
+    && make clean \ 
     # 加入环境变量
     && echo "export PATH=$PATH:/usr/local/php/bin:/usr/local/php/sbin" >> ~/.bashrc ["/bin/bash", "-c", "source ~/.bashrc"] \
     # 安装 Composer
@@ -147,8 +158,8 @@ RUN set -x \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# https://github.com/php/php-src/blob/17baa87faddc2550def3ae7314236826bc1b1398/sapi/fpm/php-fpm.8.in#L163
-STOPSIGNAL SIGQUIT
-
-EXPOSE 9000
+# 设置容器启动时要运行的命令只有在你执行 docker run 或者 docker start 命令是才会运行，其他情况下不运行。
 CMD ["/usr/local/php/sbin/php-fpm"]
+
+# 设置暴露端口号，注意是容器暴露端口号，并不是暴露到物理机上的端口号
+EXPOSE 9000
