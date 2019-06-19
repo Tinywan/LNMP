@@ -1,6 +1,6 @@
 FROM php:5.6.40-fpm-alpine
 
-ENV PHP_EXTENSIONS="gd,bcmath,pdo,mysqli,pdo_mysql,bz2,calendar,mcrypt,opcache,redis,pcntl,sockets"
+ENV PHP_EXTENSIONS="gd,bcmath,pdo,mysqli,pdo_mysql,bz2,calendar,mcrypt,opcache,redis,pcntl,sockets,xdebug"
 ENV MORE_EXTENSION_INSTALLER="php56.sh"
 ENV ALPINE_REPOSITORIES="mirrors.aliyun.com"
 

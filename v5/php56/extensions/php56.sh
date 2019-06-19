@@ -20,8 +20,8 @@ fi
 
 if [ -z "${EXTENSIONS##*,sodium,*}" ]; then
     echo "---------- Install sodium ----------"
-    apk add --no-cache libsodium-dev
-	docker-php-ext-install ${MC} sodium
+    apk add --no-cache libsodium-dev \
+	&& docker-php-ext-install ${MC} sodium
 fi
 
 
